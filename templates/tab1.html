@@ -1,0 +1,34 @@
+Organise!
+{% if pretask %}
+{%for i in pretask%}
+  <div class="cell" id="{{i.id}}">
+    <div id="pt" class="pretask">{{i.title}}</div>
+    <div id="ptr" class="pretask_right">
+        <!--<br>
+        <form>
+        {{form}}
+        </form>-->
+       <button>Done</button>
+       <button>Delegate</button>
+       <button>To do</button>
+    </div>
+  </div>
+{% endfor %}
+{%endif%}
+<script>
+ $(document).ready(function() {
+$('div.pretask_right').hide();
+$("div.cell").hover(function(event) {
+            //alert("aa"+$(this).attr('id'));
+            //alert($(this).find('div.pretask-right').attr('id'));
+            //$(this).find('div.pretask_right').slideDown();
+            $(this).find('div.pretask_right').toggle(200);
+            event.stopPropagation();
+            //alert($(this).find("div.pretask-right").attr('id'));
+        }, function(event){
+            $(this).find('div.pretask_right').slideUp();
+            event.stopPropagation();
+            }); 
+    });
+
+</script>

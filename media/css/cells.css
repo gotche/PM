@@ -1,0 +1,20 @@
+.cell {
+    display: block;
+    font-size: 10px;
+    margin: 2px;
+    background: #E5EAF1;
+    padding: 2px;
+}
+.prestask_button {
+    display:inline-block; 
+}
+
+.pretask {
+    display:inline-block;
+    width: 80%; 
+    margin-top: 2px;
+}
+.pretask_right {
+    display:inline-block;
+    text-align: right; 
+}
