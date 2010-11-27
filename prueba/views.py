@@ -49,3 +49,15 @@ def save_task(request):
     template='salidatask.html'
     data={}
     return render_to_response(template, data, context_instance=RequestContext(request))
+
+
+def see_pretask(request,id):
+
+    try:
+        pt = PreTask.objects.get(pk=int(id))
+    except:
+        pt = None
+    
+    template='see_pretask.html'
+    data={'pt':pt,}
+    return render_to_response(template, data, context_instance=RequestContext(request))

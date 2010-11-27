@@ -10,6 +10,7 @@ urlpatterns = patterns('',
      (r'^tab1/$', 'prueba.views.tab1'),
      (r'^tab2/$', 'prueba.views.tab2'),
      (r'^save/$', 'prueba.views.save'),
+     (r'^see_pretask/(?P<id>\d+)$', 'prueba.views.see_pretask'),
 
     # Uncomment the admin/doc line below and add 'django.contrib.admindocs' 
     # to INSTALLED_APPS to enable admin documentation:
