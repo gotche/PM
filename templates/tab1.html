@@ -1,17 +1,13 @@
-<div class="head-greeting">Organise!</div>
+<div id="breadcrumb"></div><br>
+<!--<div class="head-greeting">Organise!</div>-->
 <div class="left-pane" style="width: 50%; display: inline-block; vertical-align: top;">
+Organise!
+
 {% if pretask %}
 {%for i in pretask%}
   <div class="cell" id="{{i.id}}">
     <div id="pt" class="pretask">{{i.title}}</div>
     <div id="ptr" class="pretask_right">
-        <!--<br>
-        <form>
-        {{form}}
-        </form>-->
-       <button>Done</button>
-       <button>Delegate</button>
-       <button>To do</button>
     </div>
   </div>
 {% endfor %}
@@ -21,18 +17,21 @@
 <script>
  $(document).ready(function() {
 $('div.pretask_right').hide();
+$('div.cell').removeClass('pretaskselected');
 $("div.cell").click(function(event) {
-            //alert("aa"+$(this).attr('id'));
-            //alert($(this).find('div.pretask-right').attr('id'));
-            //$(this).find('div.pretask_right').slideDown();
-            //$(this).find('div.pretask_right').toggle(200);
-            //event.stopPropagation();
-            //alert($(this).find("div.pretask-right").attr('id'));
-            $('.right-pane').load('see_pretask/'+$(this).attr('id'));
+            $(this).addClass('pretaskselected');
+            //$('.right-pane').load('see_pretask/'+$(this).attr('id'));
+            $(this).parent().load('see_pretask/'+$(this).attr('id'));
+            // cambiar el tasks_id
+            $('div#breadcrumb').append('<button id="tasks_id_o_nombre" disabled="disabled">Tarea clickada</button>')
         }, function(event){
-            $(this).find('div.pretask_right').slideUp();
-            event.stopPropagation();
+            //event.stopPropagation();
             }); 
     });
-
+$('div#breadcrumb').append('<button id="tasks_home">Tasks</button>')
+//$('div#breadcrumb').append('<a href="/">aaaa</a> > aqui')
+$('#tasks_home').click(function(event) {
+  var $tabs=$('#tabs');
+  $tabs.tabs( "load" , 0);
+});
 </script>

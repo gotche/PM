@@ -11,3 +11,6 @@ a:active {
 :focus {
   -moz-outline-style:none;
 }
+
+html,body {height: 100%}
+

@@ -13,7 +13,7 @@ def details(request):
 
 def tab1(request):
 
-    p = PreTask.objects.all()
+    p = PreTask.objects.order_by('-id')
 
     form = TaskForm()
 

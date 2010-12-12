@@ -1,4 +1,20 @@
-This works!
 {%if pt%}
     {{pt.title}}
 {%endif%}
+<!--
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head><title> New Document </title></head>
+<body style="margin:0px">
+<div id="rootTable">
+<table>
+<tr><td>header</td></tr>
+<tr><td id="maxHeightRow">content</td></tr>
+<tr><td>footer</td></tr></table>
+</div>
+</body>
+<script language="javascript" type="text/javascript">
+document.getElementById("maxHeightRow").style.height=document.body.offsetHeight - (document.getElementById("rootTable").offsetHeight-document.getElementById("maxHeightRow").offsetHeight+0)+"px";//0 is padding.
+</script>
+</html>
+-->
