@@ -10,7 +10,13 @@ Probandoooo
 {{form.as_table}}
 </table>
 <br>
-<input type="submit" value="save" />
+
+<!--
+thats supposed to work and its the preferred way because of ie
+<input type="button" id="save-task" value="Save" name="save" ></input>-->
+<button name="save" value="ok" id="save-task" >Save</button>
+<button name="delegate" value="ok" id="delegate-task" >Delegate</button>
+<!--<input type="submit" value="save" />-->
 </form>
 <span id="salida"></span>
 <div id="salidaia"></div>

@@ -87,8 +87,17 @@ def save_detailed_task(request,task_id):
     t = Task.objects.get(pk=int(task_id))
 
     if request.POST:
+
+        # which button?
+        if "save" in request.POST:
+            print "save pushed"
+
+        if "delegate" in request.POST:
+            print "delegate pushed"
+
         form = DetailedTaskForm(request.POST,instance=t)
         print request.POST
+        #print request
         if form.is_valid():
             print "form valid"
             form.instance.creator=Employee.objects.get(user=request.user)
