@@ -1,0 +1,109 @@
+<head>
+
+    <title>PM</title>
+
+    <!-- include the Tools -->
+    <!-- <script src="http://cdn.jquerytools.org/1.2.5/full/jquery.tools.min.js"></script> -->
+
+    <!-- standalone page styling (can be removed) -->
+    <link rel="stylesheet" type="text/css" href="{{MEDIA_URL}}css/standalone.css?"/> 
+
+    <!-- tab styling -->
+    <!--<link rel="stylesheet" type="text/css" href="{{MEDIA_URL}}css/tabs-no-images.css"/> -->
+    <link rel="stylesheet" type="text/css" href="{{MEDIA_URL}}css/cells.css?"/>
+
+
+    <!-- a ver -->
+    <!--<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>-->
+    <link href="{{MEDIA_URL}}css/jquery-ui.css" rel="stylesheet" type="text/css"/>
+    <!--<link href="{{MEDIA_URL}}css/jquery-tabs.css" rel="stylesheet" type="text/css"/>-->
+    <!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>-->
+    <script src="{{MEDIA_URL}}js/jquery.min.js"></script>
+     <!-- <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>-->
+      <script src="{{MEDIA_URL}}js/jquery-ui.min.js"></script>
+    
+<!-- for ajax form -->
+    <script type="text/javascript" src="{{MEDIA_URL}}js/jquery.form.js"></script>
+
+    <script>
+ 
+/*        var $tabs=$('#tabs').tabs({
+        load: function(event, ui) {
+            $('a', ui.panel).click(function() {
+                $(ui.panel).load(this.href);
+                return false;
+            });
+        }
+        });
+        var opciones= {
+                           beforeSubmit: mostrarLoader, //funcion que se ejecuta antes de enviar el form
+                           success: mostrarRespuesta //funcion que se ejecuta una vez enviado el formulario
+        };
+         //asignamos el plugin ajaxForm al formulario myForm y le pasamos las opciones
+        $('#task_input').ajaxForm(opciones) ;
+
+         //lugar donde defino las funciones que utilizo dentro de "opciones"
+         function mostrarLoader(){
+                      $("#loader_gif").fadeIn("slow"); //muestro el loader de ajax
+         };
+         function mostrarRespuesta (responseText){
+                      $("#loader_gif").fadeOut("slow"); // Hago desaparecer el loader de ajax
+                      //$("#ajax_loader").append("<br>Mensaje: "+responseText).fadeOut("slow");
+                      //$("#Inbox").append(responseText)  
+                    //alert("selected");
+                    //var index = 0;
+                    //var api = $("#tabs").data("tabs");
+                    //api.next();
+                    $tabs.tabs( "load" , 0);
+                    $('#id_title').val('')
+                    //var selected = $tabs.tabs('option', 'selected');
+                    //alert("tabs:"+selected.val());
+         };
+
+*/
+    $(document).ready(function() {
+        var opciones= {
+                           beforeSubmit: mostrarLoader, //funcion que se ejecuta antes de enviar el form
+                           success: mostrarRespuesta //funcion que se ejecuta una vez enviado el formulario
+        };
+         //asignamos el plugin ajaxForm al formulario myForm y le pasamos las opciones
+        $('#task_input').ajaxForm(opciones) ;
+
+         //lugar donde defino las funciones que utilizo dentro de "opciones"
+         function mostrarLoader(){
+                      //$("#loader_gif").fadeIn("slow"); //muestro el loader de ajax
+                      //$("#ajax_loader").append("<br>Mensaje: "+responseText).fadeIn("slow");
+         };
+         function mostrarRespuesta (responseText){
+                      //$("#loader_gif").fadeOut("slow"); // Hago desaparecer el loader de ajax
+                      //  alert('this is---'+responseText+'-----');
+                      if (responseText == "ok") {
+                        $("#ajax_loader").html(responseText).fadeIn("slow").fadeOut("slow");
+                       } else {
+                        $("#ajax_loader").html(responseText).fadeIn("slow");
+                        }
+                    $('#id_title').val('');
+         };
+
+    });
+  </script>
+
+
+</head>
+
+<body style="font-size:62.5%;">
+  
+<b>Test form</b>
+
+<form id='task_input' method="post" action="save/">
+{{form}}{% csrf_token %}
+<input type="submit" value="Add"  \><span id="ajax_loader"></span>
+</form>
+<br>
+<!-- tabs -->
+<!-- single pane. it is always visible -->
+<div class="css-panes">
+    <!--<div style="display:block"></div>-->
+</div>
+
+</body>

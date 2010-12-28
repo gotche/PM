@@ -93,7 +93,10 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.messages',
+    'django.contrib.admin', 
     'prueba',
+    'entradas',
+    'login',
     # Uncomment the next line to enable the admin:
     # 'django.contrib.admin',
 )
@@ -102,3 +105,6 @@ EMAIL_HOST = ('gandul')
 EMAIL_HOST_USER = ('ticket')
 EMAIL_HOST_PASSWORD = ('')
 EMAIL_USE_TLS = ('False')
+
+LOGIN_REDIRECT_URL='/prueba/' 
+LOGIN_URL='/'   

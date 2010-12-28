@@ -6,6 +6,7 @@ from django.conf.urls.defaults import *
 
 urlpatterns = patterns('',
     # Example:
+    (r'^$','django.contrib.auth.views.login', {'template_name': 'login/login.html'}),
      (r'^prueba/', include('prueba.urls')),
 
     # Uncomment the admin/doc line below and add 'django.contrib.admindocs' 
