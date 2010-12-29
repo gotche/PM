@@ -13,9 +13,10 @@ def details(request):
     return render_to_response(template, data, context_instance=RequestContext(request))
 
 def tab1(request):
+    # state = 0 (inbox)
+    p = Task.objects.filter(state=0)
 
-    p = Task.objects.order_by('-id')
-
+    p = p.order_by('-id')
     form = TaskForm()
 
     template='tab1.html'

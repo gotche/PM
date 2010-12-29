@@ -20,5 +20,16 @@
 }
 .pretaskselected {
     background: #FFFFFF;
-
+}
+.pretaskexperimental {
+background: none repeat scroll 0 0 #CCCCCC;
+    display: none;
+    border-width: 1px;
+    border-color: #FFFFFF;
+    height: 400px;
+    left: 75px;
+    position: absolute;
+    top: 90px;
+    width: 500px;
+    z-index: 2;
 }
