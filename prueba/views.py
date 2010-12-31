@@ -77,8 +77,9 @@ def save(request):
     if request.POST:
         form = TaskForm(request.POST)
         if form.is_valid():
-            form.instance.creator=Employee.objects.get(user=request.user)
-            form.save()
+            t = form.save(commit=False)
+            t.creator=Employee.objects.get(user=request.user)
+            t.save()
     template='salidaprueba.html'
     data={}
     return render_to_response(template, data, context_instance=RequestContext(request))
@@ -89,23 +90,32 @@ def save_detailed_task(request,task_id):
 
     if request.POST:
 
+        form = DetailedTaskForm(request.POST,instance=t)
+
         # which button?
         if "save" in request.POST:
             print "save pushed"
+            state = '6'
 
         if "delegate" in request.POST:
             print "delegate pushed"
+            state = '5'
 
-        form = DetailedTaskForm(request.POST,instance=t)
         print request.POST
         #print request
         if form.is_valid():
             print "form valid"
-            form.instance.creator=Employee.objects.get(user=request.user)
-            form.save()
+            
+            #form.instance.state = state
+            #form.instance.creator=Employee.objects.get(user=request.user)
+            t = form.save(commit=False)
+            t.state=state
+            t.save()
             print "form saved"
+            print form.instance.state
         else:
             print "no valid"
+
     template='salidaprueba.html'
     data={'output': 'ok'}
     return render_to_response(template, data, context_instance=RequestContext(request))

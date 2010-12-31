@@ -1,5 +1,5 @@
 from django.db import models
-from django.forms import ModelForm, Textarea
+from django.forms import ModelForm, Textarea, TextInput
 from entradas.models import Empleado as Employee # TODO: translate module entradas source code
 
 class PreTask( models.Model):
@@ -41,7 +41,8 @@ class DetailedTaskForm(ModelForm):
         model = Task
         fields = ('title','description','state','creator',)
         widgets = {
-            #'description': Textarea (attrs={'rows': 4, 'columns': 100,}),
+            'description': Textarea (attrs={'rows': 4, 'cols': 30,}),
             #'id': Textarea (attrs={'display': None,}),
+            'state': TextInput (attrs={'style':'display:none;',}),
         }
 

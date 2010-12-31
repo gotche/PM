@@ -1,13 +1,13 @@
-{%if pt%}
-    {{pt.title}}
-{%endif%}
-
+<body>
 Probandoooo
 
 <form id="taskita" method="post" action="save_detailed_task/{{task.id}}/">
 {% csrf_token %}
 <table>
-{{form.as_table}}
+<tr><td>Task</td><td> {{form.title}}</td>
+<tr><td>Description</td><td> {{form.description}}</td>
+<tr><td>State</td><td> {{form.state}}{{form.instance.get_state_display}}</td>
+<tr><td>Creator</td><td> {{form.creator}}</td>
 </table>
 <br>
 
@@ -68,6 +68,7 @@ $(document).ready(function() {
 //alert("jajaj");
 });
 </script>
+</body>
 <!--
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <html>
