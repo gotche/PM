@@ -26,9 +26,33 @@
     display: none;
     border: 1px solid #AAAAAA;
     height: 400px;
-    left: 75px;
+    left: 500px;
     position: absolute;
     top: 90px;
-    width: 500px;
+    width: 380px;
     z-index: 2;
+}
+
+.fordates {
+    font-size: 63%;
+}
+.fuente{
+    font-size: 110%;
+}
+.span-right{
+    float: right;
+    margin-top: 5px;
+}
+.div-table-left {
+    display: block-inline;
+    float: left;
+    width: 3em;
+    min-height: 2em;
+    vertical-align: top;
+}
+.div-table-right{
+    display: block-inline;
+    float: left;
+    vertical-align: top;
+    margin-left: 45px;
 }

@@ -64,7 +64,7 @@ def pretask_input( request):
 
 def detailed_task(request,task):
 
-    t = Task.objects.get(id=int(task))
+    t = Task.objects.get(id=task)
     form = DetailedTaskForm(instance=t)
 
     #print form
@@ -86,7 +86,7 @@ def save(request):
 
 def save_detailed_task(request,task_id):
 
-    t = Task.objects.get(pk=int(task_id))
+    t = Task.objects.get(pk=task_id)
 
     if request.POST:
 
@@ -115,6 +115,7 @@ def save_detailed_task(request,task_id):
             print form.instance.state
         else:
             print "no valid"
+            print form.errors
 
     template='salidaprueba.html'
     data={'output': 'ok'}

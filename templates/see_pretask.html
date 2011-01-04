@@ -1,26 +1,41 @@
-<body>
-Probandoooo
-
+<div>
 <form id="taskita" method="post" action="save_detailed_task/{{task.id}}/">
 {% csrf_token %}
-<table>
+<table class="fuente">
 <tr><td>Task</td><td> {{form.title}}</td>
+<tr><td></td><td><span class="fordates">Created by {{form.creator}}{{form.instance.creator}} {{form.instance.creation_date}}</span></td>
 <tr><td>Description</td><td> {{form.description}}</td>
-<tr><td>State</td><td> {{form.state}}{{form.instance.get_state_display}}</td>
-<tr><td>Creator</td><td> {{form.creator}}</td>
+<!--<tr><td>State</td><td> {{form.state}}{{form.instance.get_state_display}}</td>-->{{form.state}}
 </table>
-<br>
+<div class="no-delegate">
+<a href="/delegate task" id="delegate-input">Delegate...</a>
+</div>
+<div class="delegate" style="display: none;">
+    <div class=div-table-left>Assign to</div><div id='friends' class='ui-helper-clearfix div-table-right'>{{form.workers}}</div><span style="float:right;margin-right:1px;">x</span>
+</div>
+<div style="clear:both;"></div>
 
 <!--
 thats supposed to work and its the preferred way because of ie
 <input type="button" id="save-task" value="Save" name="save" ></input>-->
-<button name="save" value="ok" id="save-task" >Save</button>
-<button name="delegate" value="ok" id="delegate-task" >Delegate</button>
+<div class="no-delegate">
+<span class="span-right">
+    <button name="save" value="ok" id="save-task" >Done</button>
+    <button name="save" value="ok" id="save-task" >Later</button>
+    <button name="save" value="ok" id="save-task" >Idea</button>
+</span>
+</div>
+<div class="delegate">
+<span class="span-right"><button name="delegate" value="ok" id="delegate-task" >Delegate</button></span>
+</div>
 <!--<input type="submit" value="save" />-->
 </form>
+<div> Comments...</div>
 <span id="salida"></span>
 <div id="salidaia"></div>
 <!--<button id="save-task" >Save</button>-->
+<!--<script type="text/javascript" src="{{MEDIA_URL}}css/ui-lightness/jquery-ui-1.8.7.custom.css"></script>-->
+<!--<script type="text/javascript" src="{{MEDIA_URL}}js/jquery-ui.min.js"></script>-->
 <script>
 $(document).ready(function() {
 
@@ -28,13 +43,7 @@ $(document).ready(function() {
                            beforeSubmit: mostrarLoader, //funcion que se ejecuta antes de enviar el form
                            success: mostrarRespuesta //funcion que se ejecuta una vez enviado el formulario
         };
-         //asignamos el plugin ajaxForm al formulario myForm y le pasamos las opciones
-        $('#taskita').ajaxForm(opciones);
-
-        // para cargar la siguiente:
-
-        //$('#taskita').append(tarea);
-        alert('eo'+tarea);
+        
          //lugar donde defino las funciones que utilizo dentro de "opciones"
          function mostrarLoader(){
                       //$("#loader_gif").fadeIn("slow"); //muestro el loader de ajax
@@ -44,31 +53,91 @@ $(document).ready(function() {
                       //  alert('this is---'+responseText+'-----');
                       if (responseText == "ok") {
                         $("#salida").html(responseText).fadeIn("slow").fadeOut("slow");
+                        //test: in the same div we load another task
+                        //$('.pretaskexperimental').load('see_pretask/'+$(this).attr('id'));
+
                         //$("#left-pane").load('see_pretask/'+$(this).attr('id'));
                         // this was a bad way ^
+
+                    // better way
                      var $tabs=$('#tabs');
                     $tabs.tabs( "load" , 0);
+
                        } else {
                         $("#salida").html(responseText).fadeIn("slow");
                         }
          };
 
+         //asignamos el plugin ajaxForm al formulario myForm y le pasamos las opciones
+        $('#taskita').ajaxForm(opciones);
+$('#id_workers').autocomplete({
+            source:function(req, add){
 
-//$(this).parent().load('see_pretask/'+$(this).attr('id'));
-    /*$('#save-task').click(function(event) {
-    //$('.left-pane').html("hola");
-    //$.post('prueba/save_detailed_task/');
-    $.post("prueba/save_detailed_task/", { name: "John", time: "2pm" },
-       function(data){
-         alert("Data Loaded: " + data);
-       });
-    alert('ss');
-    });*/
-//};
-//alert("jajaj");
+                //pass request to server
+                $.getJSON("/autocomplete/lookup", req, function(data) {
+
+                    //create array for response objects
+                    var suggestions = [];
+                    //alert(data);
+                    //process response
+                    $.each(data, function(i, val){
+                    suggestions.push(val);
+                });
+                //alert(suggestions);
+                //pass array to callback
+                add(suggestions);
+            });
+        },
+
+ select: function(e, ui) {
+            //create formatted friend
+            var friend = ui.item.value,
+                //span = $("<span style='width: 85px;'>").text(friend),
+                span = $("<span style='width: 85px;'>").html("<div class='f'>"+friend+"</div>"),
+                a = $("<a>").addClass("remove").attr({
+                    href: "javascript:",
+                    title: "Remove " + friend
+                }).text("x").appendTo(span);
+
+                $('#id_workers').val('');
+                //add friend to friend div
+                span.insertBefore("#id_workers");
+    //$("#to").focus();
+      //          $("#to").text("");
+            return false;
+            },
+
+  //define select handler
+            change: function() {
+
+                //prevent 'to' field being updated and correct position
+                $("#to").val("").css("top", 2);
+            }
+ 
+        });
+//add live handler for clicks on remove links
+$(".remove", document.getElementById("friends")).live("click", function(){
+
+    //remove current friend
+    $(this).parent().remove();
+
+    //correct 'to' field position
+    if($("#friends span").length === 0) {
+        $("#id_workers").css("top", 0);
+    }
+});
+
+$('div.delegate').hide();
+
+$('#delegate-input').click(function(event){
+    event.preventDefault(); 
+    $('div.delegate').show();
+    $('div.no-delegate').hide();
+    });
+
 });
 </script>
-</body>
+</div>
 <!--
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <html>
@@ -86,3 +155,4 @@ document.getElementById("maxHeightRow").style.height=document.body.offsetHeight 
 </script>
 </html>
 -->
+

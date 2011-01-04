@@ -20,6 +20,7 @@ Organise!
 $('div.pretask_right').hide();
 $('div.cell').removeClass('pretaskselected');
 $("div.cell").click(function(event) {
+            $('div.cell').removeClass('pretaskselected');
             $(this).addClass('pretaskselected');
             //$('.right-pane').load('see_pretask/'+$(this).attr('id'));
             //$(this).parent().load('see_pretask/'+$(this).attr('id'));
@@ -30,8 +31,7 @@ $("div.cell").click(function(event) {
             //event.stopPropagation();
             }); 
     });
-$('div#breadcrumb').append('<button id="tasks_home">Tasks</button>')
-//$('div#breadcrumb').append('<a href="/">aaaa</a> > aqui')
+$('div#breadcrumb').append('<button id="tasks_home">Tasks</button>');
 $('#tasks_home').click(function(event) {
   var $tabs=$('#tabs');
   $tabs.tabs( "load" , 0);

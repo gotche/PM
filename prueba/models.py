@@ -39,10 +39,13 @@ class TaskForm( ModelForm):
 class DetailedTaskForm(ModelForm):
    class Meta:
         model = Task
-        fields = ('title','description','state','creator',)
+        fields = ('title','description','state','creator','workers',)
         widgets = {
-            'description': Textarea (attrs={'rows': 4, 'cols': 30,}),
+            'description': Textarea (attrs={'rows': 4, 'style': 'width:20em;',}),
             #'id': Textarea (attrs={'display': None,}),
+            'title': TextInput (attrs={'style':'width:20em;',}),
             'state': TextInput (attrs={'style':'display:none;',}),
+            'creator': TextInput (attrs={'style':'display:none;',}),
+            'workers': TextInput (attrs={'class':'ui-autocomplete-input', 'type':'text', 'autocomplete':"off", 'role':"textbox", 'aria-autocomplete':"list", 'aria-haspopup':"true",}),
         }
 
