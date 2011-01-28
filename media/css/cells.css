@@ -21,7 +21,7 @@
 .pretaskselected {
     background: #FFFFFF;
 }
-.pretaskexperimental {
+#pretaskexperimental {
     background: none repeat scroll 0 0 #CCCCCC;
     display: none;
     border: 1px solid #AAAAAA;
@@ -55,4 +55,17 @@
     float: left;
     vertical-align: top;
     margin-left: 45px;
+}
+.nav-head {
+    display:inline;
+}
+#navlist li
+{
+display: inline;
+list-style-type: none;
+padding-right: 20px;
+}
+#task_input {
+
+  display: inline;
 }

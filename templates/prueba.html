@@ -40,6 +40,14 @@
             });
         }
         });
+        var $tabs2=$('#Tasks').tabs({
+        load: function(event, ui) {
+            $('a', ui.panel).click(function() {
+                $(ui.panel).load(this.href);
+                return false;
+            });
+        }
+        });
         var opciones= {
                            beforeSubmit: mostrarLoader, //funcion que se ejecuta antes de enviar el form
                            success: mostrarRespuesta //funcion que se ejecuta una vez enviado el formulario
@@ -72,24 +80,41 @@
 </head>
 
 <body style="font-size:62.5%;">
-  
-
+ <ul id="navlist"> 
+<li>
 <form id='task_input' method="post" action="save/">
 {{form}}{% csrf_token %}
-<input type="submit" value="Add"  \><span id="ajax_loader"><img id="loader_gif" src="{{MEDIA_URL}}img/loader.gif" style=" display:none;"/></span>
-</form>
+   <input type="submit" value="Add"  \>
+   <span id="ajax_loader"><img id="loader_gif" src="{{MEDIA_URL}}img/loader.gif" style=" display:none;"/></span>
+</form></li>
+<li>
+<img src="{{MEDIA_URL}}img/pmlogotransscale.png"></img>
+</li>
+</ul>
 <br>
 <!-- tabs -->
 <div id="tabs">
 <ul>
     <li><a href="tab1/" title="Inbox" >Inbox</a></li>
-    <li><a href="tab2/" title="To do" >To do</a></li>
+    <li><a href="tab2/" title="Tasks" >Tasks</a></li>
     <li><a href="tab3/" title="Delegated" >Delegated</a></li>
 </ul>
 
     <div id="Inbox"></div>
-    <div id="To_do"></div>
+    <div id="Tasks">
+        <ul>
+            <li><a href="tab21/" title="Todo" >Todo</a></li>
+            <li><a href="tab22/" title="Done" >Done</a></li>
+            <li><a href="tab23/" title="Future" >Future</a></li>
+        </ul>
+
+            <div id="Todo"></div>
+            <div id="Done"></div>
+            <div id="Future"></div>
+
+    </div>
     <div id="Delegated"></div>
+
 </div>
 <!-- single pane. it is always visible -->
 <div class="css-panes">

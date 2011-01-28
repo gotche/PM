@@ -14,7 +14,7 @@ Organise!
 {%endif%}
 </div>
 <div class="right-pane" style="width: 45%; display:inline-block; vertical-align: top;"></div>
-<div class="pretaskexperimental ui-corner-all"></div>
+<div id="pretaskexperimental" class="ui-corner-all"></div>
 <script>
  $(document).ready(function() {
 $('div.pretask_right').hide();
@@ -24,7 +24,7 @@ $("div.cell").click(function(event) {
             $(this).addClass('pretaskselected');
             //$('.right-pane').load('see_pretask/'+$(this).attr('id'));
             //$(this).parent().load('see_pretask/'+$(this).attr('id'));
-            $('.pretaskexperimental').css('display','block').load('see_pretask/'+$(this).attr('id'));
+            $('#pretaskexperimental').css('display','block').load('see_pretask/'+$(this).attr('id'));
             // cambiar el tasks_id
             $('div#breadcrumb').append('<button id="tasks_id_o_nombre" disabled="disabled">Tarea clickada</button>')
         }, function(event){

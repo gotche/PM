@@ -12,6 +12,13 @@ urlpatterns = patterns('',
      (r'^tab3/$', 'prueba.views.tab3'),
      (r'^save/$', 'prueba.views.save'),
  
+    # tabs2
+     (r'^tab21/$', 'prueba.views.tab21'),
+     (r'^tab22/$', 'prueba.views.tab22'),
+     (r'^tab23/$', 'prueba.views.tab23'),
+
+     (r'^ttask/(?P<state>\d+)/$', 'prueba.views.ttask'),
+
      (r'^prueba/$', 'prueba.views.prueba'),
      (r'^prueba/save/$', 'prueba.views.pruebasave'),
 

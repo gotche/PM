@@ -1,1 +1,25 @@
-holaaaaaaaaaaaaa tab 2
+aaaa
+<ul>
+<li><button id="ttodo">Todo</button></li>
+<li><button id="tdone">Done</button></li>
+<li><button id="tidea">Idea</button></li>
+</ul>
+<div id="sali"></div>
+<script>
+$(document).ready(function() {
+
+    $('#ttodo').click(function(event) {
+        //$('#sali').html("guay");
+        $('#sali').load("ttask/2/");
+    });
+    $('#tdone').click(function(event) {
+        $('#sali').load("ttask/3/");
+    });
+    $('#tidea').click(function(event) {
+        $('#sali').load("ttask/7/");
+    });
+    
+    $('#ttodo').click()
+
+});
+</script>

@@ -1,6 +1,7 @@
 body {
-	padding:50px 80px;
+	padding: 15px 80px;
 	font-family:"Lucida Grande","bitstream vera sans","trebuchet ms",sans-serif,verdana;
+    font-size: 62.5%;
 }
 
 /* get rid of those system borders being generated for A tags */

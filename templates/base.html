@@ -5,11 +5,6 @@
 <link rel="stylesheet" type="text/css" href="{% block stylesheet %}{% load adminmedia %}{% admin_media_prefix %}css/base.css{% endblock %}" />
 {% block extrastyle %}{% endblock %}
 <!--[if lte IE 7]><link rel="stylesheet" type="text/css" href="{% block stylesheet_ie %}{% load adminmedia %}{% admin_media_prefix %}css/ie.css{% endblock %}" /><![endif]-->
-<script type="text/javascript" src="/mymedia/js/jquery.js?"></script> 
-<script type="text/javascript" src="/mymedia/js/jmuro.js"></script> 
-<script type="text/javascript" src="/mymedia/js/jquery.placeholder.js"></script>
-<script type="text/javascript" src="/mymedia/js/jquery.defaultvalue.js?" charset="utf-8"></script>
-<link rel="stylesheet" type="text/css" href="/mymedia/muro.css?id=3" />
 {% if LANGUAGE_BIDI %}<link rel="stylesheet" type="text/css" href="{% block stylesheet_rtl %}{% admin_media_prefix %}css/rtl.css{% endblock %}" />{% endif %}
 {% block extrahead %}{% endblock %}
 {% block blockbots %}<meta name="robots" content="NONE,NOARCHIVE" />{% endblock %}

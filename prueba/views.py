@@ -29,10 +29,38 @@ def tab2(request):
     data={}
     return render_to_response(template, data, context_instance=RequestContext(request))
 
+def tab21(request):
+
+    template='tab21.html'
+    data={}
+    return render_to_response(template, data, context_instance=RequestContext(request))
+
+def tab22(request):
+
+    template='tab22.html'
+    data={}
+    return render_to_response(template, data, context_instance=RequestContext(request))
+
+def tab23(request):
+
+    template='tab23.html'
+    data={}
+    return render_to_response(template, data, context_instance=RequestContext(request))
+
 def tab3(request):
 
     template='tab3.html'
     data={}
+    return render_to_response(template, data, context_instance=RequestContext(request))
+
+def ttask(request,state):
+
+    print str(state)
+    #tasks = Task.objects.all()
+    tasks = Task.objects.filter(state=state)
+
+    template='ttask.html'
+    data={'tasks':tasks}
     return render_to_response(template, data, context_instance=RequestContext(request))
 
 def prueba(request):
@@ -94,17 +122,17 @@ def save_detailed_task(request,task_id):
 
         # which button?
         if "save" in request.POST:
-            print "save pushed"
-            state = '6'
 
-        if "delegate" in request.POST:
-            print "delegate pushed"
-            state = '5'
+            if request.POST['save'] == "done":
+                state = '3'
+            if request.POST['save'] == "later":
+                state = '2'
+            if request.POST['save'] == "idea":
+                state = '7'
 
         print request.POST
-        #print request
+
         if form.is_valid():
-            print "form valid"
             
             #form.instance.state = state
             #form.instance.creator=Employee.objects.get(user=request.user)
