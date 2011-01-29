@@ -1,15 +1,14 @@
-aaaa
-<ul>
+<ul class="nav-list">
 <li><button id="ttodo">Todo</button></li>
 <li><button id="tdone">Done</button></li>
 <li><button id="tidea">Idea</button></li>
+<li><button id="tdelegated">Delegated</button></li>
 </ul>
 <div id="sali"></div>
 <script>
 $(document).ready(function() {
 
     $('#ttodo').click(function(event) {
-        //$('#sali').html("guay");
         $('#sali').load("ttask/2/");
     });
     $('#tdone').click(function(event) {
@@ -18,7 +17,11 @@ $(document).ready(function() {
     $('#tidea').click(function(event) {
         $('#sali').load("ttask/7/");
     });
-    
+    // todo: change state number not decided yet
+    $('#tdelegated').click(function(event) {
+        $('#sali').load("ttask/8/");
+    });
+
     $('#ttodo').click()
 
 });

@@ -102,12 +102,17 @@ def detailed_task(request,task):
     return render_to_response(template, data, context_instance=RequestContext(request))
 
 def save(request):
+    """
+    Save the task and shows a little ajax ok
+
+    """
     if request.POST:
         form = TaskForm(request.POST)
         if form.is_valid():
             t = form.save(commit=False)
             t.creator=Employee.objects.get(user=request.user)
             t.save()
+ 
     template='salidaprueba.html'
     data={}
     return render_to_response(template, data, context_instance=RequestContext(request))

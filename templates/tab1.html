@@ -22,8 +22,6 @@ $('div.cell').removeClass('pretaskselected');
 $("div.cell").click(function(event) {
             $('div.cell').removeClass('pretaskselected');
             $(this).addClass('pretaskselected');
-            //$('.right-pane').load('see_pretask/'+$(this).attr('id'));
-            //$(this).parent().load('see_pretask/'+$(this).attr('id'));
             $('#pretaskexperimental').css('display','block').load('see_pretask/'+$(this).attr('id'));
             // cambiar el tasks_id
             $('div#breadcrumb').append('<button id="tasks_id_o_nombre" disabled="disabled">Tarea clickada</button>')

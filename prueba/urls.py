@@ -5,20 +5,19 @@ from django.conf.urls.defaults import *
 # admin.autodiscover()
 
 urlpatterns = patterns('',
-    # Example:
+    # front end:
      (r'^$', 'prueba.views.details'),
+
+    # tabs
      (r'^tab1/$', 'prueba.views.tab1'),
      (r'^tab2/$', 'prueba.views.tab2'),
      (r'^tab3/$', 'prueba.views.tab3'),
      (r'^save/$', 'prueba.views.save'),
- 
-    # tabs2
-     (r'^tab21/$', 'prueba.views.tab21'),
-     (r'^tab22/$', 'prueba.views.tab22'),
-     (r'^tab23/$', 'prueba.views.tab23'),
 
+    # filtro de tareas por estado
      (r'^ttask/(?P<state>\d+)/$', 'prueba.views.ttask'),
 
+    # ejemplo de autocomplete en prueba/prueba
      (r'^prueba/$', 'prueba.views.prueba'),
      (r'^prueba/save/$', 'prueba.views.pruebasave'),
 
