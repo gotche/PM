@@ -1,0 +1,35 @@
+- model: history.EventType
+  pk: 1
+  fields:
+    name: AddTask
+    description: Task added
+- model: history.EventType
+  pk: 2
+  fields:
+    name: AcceptTask
+    description: Task accepted
+- model: history.EventType
+  pk: 3
+  fields:
+    name: SolveTask
+    description: Task added
+- model: history.EventType
+  pk: 4
+  fields:
+    name: ConfirmTaskSolved
+    description: Task accepted
+- model: history.EventType
+  pk: 5
+  fields:
+    name: RejectTask
+    description: Task added
+- model: history.EventType
+  pk: 6
+  fields:
+    name: AddComment
+    description: Comment added
+- model: history.EventType
+  pk: 7
+  fields:
+    name: TaskSaved
+    description: Task Saved

@@ -2,6 +2,15 @@
 <!--<div class="head-greeting">Organise!</div>-->
 <div class="left-pane" style="width: 50%; display: inline-block; vertical-align: top;">
 Organise!
+<div id="News-Pagination"></div>
+<div id="MyContentArea"></div>
+<div id="Searchresult">
+            This content will be replaced when pagination inits.
+        </div>
+       <!-- Container element for all the Elements that are to be paginated -->
+        <div id="hiddenresult" style="display:none;">
+
+        </div>
 
 {% if pretask %}
 {%for i in pretask%}
@@ -33,5 +42,14 @@ $('div#breadcrumb').append('<button id="tasks_home">Tasks</button>');
 $('#tasks_home').click(function(event) {
   var $tabs=$('#tabs');
   $tabs.tabs( "load" , 0);
+
+    // First Parameter: number of items
+    // Second Parameter: options object
+    $("#News-Pagination").pagination(2, {
+        items_per_page:20,
+        callback:handlePaginationClick
+});
+        $('#hiddenresult').load('ttask/2/', null, initPagination);
+
 });
 </script>

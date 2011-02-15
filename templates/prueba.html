@@ -13,6 +13,8 @@
     <link rel="stylesheet" type="text/css" href="{{MEDIA_URL}}css/cells.css?{% now "U" %}"/>
     <link rel="stylesheet" type="text/css" href="{{MEDIA_URL}}css/ui-lightness/jquery-ui-1.8.7.custom.css?{% now "U" %}"/>
     <link rel="stylesheet" type="text/css" href="{{MEDIA_URL}}css/autocomplete.css?{% now "U" %}">
+    <!-- pagination in jquery -->
+    <link rel="stylesheet" type="text/css" href="{{MEDIA_URL}}css/pagination.css?{% now "U" %}">
 
 
     <!-- a ver -->
@@ -30,7 +32,33 @@
     <!-- for autocomplete -->
     <script type="text/javascript" src="{{MEDIA_URL}}js/jquery-ui.min.js"></script>
 
+    <!-- pagination in jquery -->
+    <script type="text/javascript" src="{{MEDIA_URL}}js/jquery.pagination.js"></script>
+
     <script>
+           function pageselectCallback(page_index, jq){
+                var new_content = $('#hiddenresult div.result:eq('+page_index+')').clone();
+                $('#Searchresult').empty().append(new_content);
+                return false;
+            }
+           
+            /** 
+             * Callback function for the AJAX content loader.
+             */
+            function initPagination() {
+                var num_entries = $('#hiddenresult div.result').length;
+                // Create pagination element
+                $("#Pagination").pagination(num_entries, {
+                    num_edge_entries: 2,
+                    num_display_entries: 8,
+                    callback: pageselectCallback,
+                    items_per_page:1
+                });
+             }
+
+    </script>
+    <script>
+
     $(document).ready(function() {
  
         var $tabs=$('#tabs').tabs({
@@ -64,7 +92,7 @@
          function mostrarRespuesta (responseText){
                     $("#loader_gif").fadeOut("slow"); // Hago desaparecer el loader de ajax
                     $tabs.tabs( "load" , 0);
-                    $('#id_title').val('')
+                    $('#id_title').val('');
          };
 
     });

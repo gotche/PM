@@ -1,0 +1,3 @@
+django-pagination 
+
+https://github.com/ericflo/django-pagination.git

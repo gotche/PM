@@ -28,6 +28,11 @@ class Task( models.Model):
     state = models.CharField(max_length=4,choices=states_values,default='0')
     workers = models.ManyToManyField(Employee, related_name='w')
 
+    def save(self, *args, **kwargs):
+        # log info
+        e = EventType.objects.get(name__contains='TaskSaved')
+        h = History(task=self, user=self.creator, event=e)
+        super(Task, self).save(*args, **kwargs)
 
 class TaskForm( ModelForm):
    class Meta:
